@@ -8,7 +8,6 @@ import com.mongodb.client.MongoDatabase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -20,11 +19,11 @@ public class MongoConfig {
 
     @Bean
     public MongoDatabase blogAppDatabase() {
-         MongoClient client = MongoClients.create(
+        MongoClient client = MongoClients.create(
                 MongoClientSettings.builder()
                         .applyToClusterSettings(builder ->
                                 builder.hosts(Collections.singletonList(new ServerAddress(host, port))))
                         .build());
-         return client.getDatabase(database);
+        return client.getDatabase(database);
     }
 }
