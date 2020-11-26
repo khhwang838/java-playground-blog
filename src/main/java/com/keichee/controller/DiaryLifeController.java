@@ -21,12 +21,12 @@ public class DiaryLifeController {
 
     private final DiaryLifeService diaryLifeService;
 
-    @ApiOperation("전체 목록 조회")
+    @ApiOperation("게시글 목록 조회")
     @GetMapping
-    public Response<List<Post>> getPosts() {
-        log.info("전체 목록 조회");
-
-        return new Response<>(diaryLifeService.getPosts(null));
+    public Response<List<Post>> getPosts(@RequestParam(required = false) String id,
+                                         @RequestParam(required = false) String title) {
+        Post query = Post.builder().id(id).title(title).build();
+        return new Response<>(diaryLifeService.getPosts(query));
     }
 
     @ApiOperation("다이어리 포스팅 신규생성")

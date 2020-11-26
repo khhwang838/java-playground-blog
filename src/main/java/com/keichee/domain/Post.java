@@ -2,7 +2,10 @@ package com.keichee.domain;
 
 
 import lombok.*;
+import org.bson.types.ObjectId;
 import org.springframework.lang.NonNull;
+
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -11,7 +14,9 @@ import org.springframework.lang.NonNull;
 @AllArgsConstructor
 public class Post {
 
-    private String _id;
+    private String id;
     private String title;
     private String content;
+    private ZonedDateTime createdAt;
+    private ZonedDateTime updatedAt;
 }
